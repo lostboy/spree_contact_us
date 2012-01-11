@@ -1,32 +1,46 @@
-<%= render 'shared/error_messages', :target => @inquiry %>
+<% content_for :sidebar do %>
+  <div class="wrapper_help">
+    <h3>Aide</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempor tempor diam in suscipit. Integer lacinia posuere massa, ac dictum turpis eleifend at. In sodales erat neque, sed bibendum felis. Integer in arcu libero, a mattis justo. Morbi tempus nibh eget tortor dapibus vulputate sed in justo.</p>
+  </div>
+<% end %>
 
-<div class="contact_form">
-  <%= form_for(@inquiry) do |f| %>
-    <%= f.field_container :name do %>
-      <%= f.label :name, t(:contact_name) %><span class="required">*</span>
-      <%= f.text_field :name %>
+
+<div id="wrapper_new_inquiry">
+  <h1 class="contact_us_title"><%= t(:contact_us) %></h1>
+
+
+  <div class="contact_form">
+    <%= render 'shared/error_messages', :target => @inquiry %>
+
+    <%= form_for(@inquiry) do |f| %>
+      <%= f.field_container :name, :class => "clear" do %>
+        <%= f.label :name, "#{t(:your_name)} *", :class => "label" %>
+        <%= f.text_field :name, :class => "input_field" %>
+      <% end %>
+      <%= f.field_container :email, :class => "clear" do %>
+        <%= f.label :email, "#{t(:your_email)} *", :class => "label" %>
+        <%= f.text_field :email, :class => "input_field" %>
+      <% end %>
+      <%= f.field_container :phone_number, :class => "clear" do %>
+        <%= f.label :phone_number, t(:your_phone_number), :class => "label" %>
+        <%= f.text_field :phone_number, :class => "input_field" %>
+      <% end %>
+      <%= f.field_container :inquiry_type, :class => "clear" do %>
+        <%= f.label :inquiry_type, t(:inquiry), :class => "label" %>
+        <%= f.select :inquiry_type, options_for_select(translate_types), :include_blank => t(:please_select) %>
+      <% end %>
+      <%= f.field_container :order_no, :class => "clear" do %>
+        <%= f.label :name, t(:number_order), :class => "label" %>
+        <%= f.text_field :order_no, :class => "input_field" %>
+      <% end %>
+      <%= f.field_container :message, :class => "clear" do %>
+        <%= f.label :message, "#{t(:message)} *", :class => "label" %>
+        <%= f.text_area :message, {:rows => 10, :class => 'fullwidth text_area'} %>
+      <% end %>
+      <div class="clear"></div>
+      <%= show_simple_captcha if Spree::Captcha::Config[:use_captcha] %>
+      <%= f.submit t(:send_it) %>
     <% end %>
-    <%= f.field_container :email do %>
-      <%= f.label :email, t(:contact_email) %><span class="required">*</span>
-      <%= f.text_field :email %>
-    <% end %>
-    <%= f.field_container :phone_number do %>
-      <%= f.label :phone_number, t(:contact_phone_number) %>
-      <%= f.text_field :phone_number %>
-    <% end %>    
-    <%= f.field_container :inquiry_type do %>
-      <%= f.label :inquiry_type, t(:inquiry_type) %>
-      <%= f.select :inquiry_type, options_for_select(translate_types), :include_blank => t(:please_select) %>
-    <% end %>
-    <%= f.field_container :order_no do %>
-      <%= f.label :name, t(:inquiry_order_no) %>
-      <%= f.text_field :order_no %>
-    <% end %>
-    <%= f.field_container :message do %>
-      <%= f.label :message, t(:inquiry_message) %> <span class="required">*</span>
-      <%= f.text_area :message, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
-    <% end %>    
-    <%= show_simple_captcha if Spree::Captcha::Config[:use_captcha] %>
-    <%= f.submit t(:send_inquiry) %>
-  <% end %>
+  </div>
 </div>
