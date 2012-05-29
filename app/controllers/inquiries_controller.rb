@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class InquiriesController < Spree::BaseController
   helper 'spree/base'
   include SimpleCaptcha::ControllerHelpers

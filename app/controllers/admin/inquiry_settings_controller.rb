@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::InquirySettingsController < Admin::BaseController
   def update
     # workaround for unset checkbox behaviour

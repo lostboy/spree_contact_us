@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Spree::Captcha
   class Config < Spree::Config
     class << self

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPhoneNumberToInquiries < ActiveRecord::Migration
   def self.up
     add_column :inquiries, :phone_number, :string

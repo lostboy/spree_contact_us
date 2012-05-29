@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class InquiryMailer < ActionMailer::Base
 
   def notification(inquiry)

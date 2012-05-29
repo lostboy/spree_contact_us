@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Inquiry < ActiveRecord::Base
 
   validates :name, :message, :presence => true
