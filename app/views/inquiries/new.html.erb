@@ -11,27 +11,27 @@
     <%= render 'shared/error_messages', :target => @inquiry %>
 
     <%= form_for(@inquiry) do |f| %>
-      <%= f.field_container :name, :class => "clear" do %>
+      <%= f.field_container :name do %>
         <%= f.label :name, "#{t(:your_name)} *", :class => "label" %>
         <%= f.text_field :name, :class => "input_field" %>
       <% end %>
-      <%= f.field_container :email, :class => "clear" do %>
+      <%= f.field_container :email do %>
         <%= f.label :email, "#{t(:your_email)} *", :class => "label" %>
         <%= f.text_field :email, :class => "input_field" %>
       <% end %>
-      <%= f.field_container :phone_number, :class => "clear" do %>
+      <%= f.field_container :phone_number do %>
         <%= f.label :phone_number, t(:your_phone_number), :class => "label" %>
         <%= f.text_field :phone_number, :class => "input_field" %>
       <% end %>
-      <%= f.field_container :inquiry_type, :class => "clear" do %>
+      <%= f.field_container :inquiry_type do %>
         <%= f.label :inquiry_type, t(:inquiry), :class => "label" %>
         <%= f.select :inquiry_type, options_for_select(translate_types), :include_blank => t(:please_select) %>
       <% end %>
-      <%= f.field_container :order_no, :class => "clear" do %>
+      <%= f.field_container :order_no do %>
         <%= f.label :name, t(:number_order), :class => "label" %>
         <%= f.text_field :order_no, :class => "input_field" %>
       <% end %>
-      <%= f.field_container :message, :class => "clear" do %>
+      <%= f.field_container :message do %>
         <%= f.label :message, "#{t(:message)} *", :class => "label" %>
         <%= f.text_area :message, {:rows => 10, :class => 'fullwidth text_area'} %>
       <% end %>
